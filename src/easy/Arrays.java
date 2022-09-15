@@ -1,15 +1,11 @@
 package easy;
 
-import com.sun.jdi.IntegerType;
-
 import java.util.*;
 
 public class Arrays {
 
     public static void main(String[] args) {
-        String[] strs = {"flower","flow","flight"};
-        String ans = longestCommonPrefix(strs);
-        System.out.println(ans);
+
     }
     // 1. Two Sum
     public static int[] twoSum(int[] nums, int target) {
@@ -83,6 +79,29 @@ public class Arrays {
             }
         }
         return strs[0];
+    }
+
+    // 20. Valid Paranthesis
+    public boolean isValid(String s) {
+        if(s.length()==0 || s.length()%2!=0)  return false;
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
+                stack.push(s.charAt(i));
+            }
+            else {
+                if(s.charAt(i) == ')') {
+                    if(stack.isEmpty() || stack.pop() != '(') return false;
+                }
+                if(s.charAt(i) == ']') {
+                    if(stack.isEmpty() || stack.pop() != '[') return false;
+                }
+                if(s.charAt(i) == '}') {
+                    if(stack.isEmpty() || stack.pop() != '{') return false;
+                }
+            }
+        }
+        return stack.isEmpty();
     }
 
 }
