@@ -5,7 +5,7 @@ import java.util.*;
 public class Arrays {
 
     public static void main(String[] args) {
-
+        System.out.println(lengthOfLastWord("Hello World"));
     }
     // 1. Two Sum
     public static int[] twoSum(int[] nums, int target) {
@@ -134,5 +134,11 @@ public class Arrays {
             }
         }
         return i;
+    }
+
+    // 58. Length of Last Word
+    public static int lengthOfLastWord(String s) {
+        String[] strArr=s.split(" ");
+        return strArr[strArr.length-1].length();
     }
 }
