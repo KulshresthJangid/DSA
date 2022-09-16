@@ -5,7 +5,7 @@ import java.util.*;
 public class Arrays {
 
     public static void main(String[] args) {
-        System.out.println(lengthOfLastWord("Hello World"));
+        System.out.println(climbStairs(10));
     }
     // 1. Two Sum
     public static int[] twoSum(int[] nums, int target) {
@@ -141,4 +141,44 @@ public class Arrays {
         String[] strArr=s.split(" ");
         return strArr[strArr.length-1].length();
     }
+
+    public static String addBinary(String a, String b) {
+        int i=a.length()-1;
+        int j=b.length()-1;
+        int carry=0;
+        int sum=0;
+        StringBuilder sb = new StringBuilder("");
+
+        while(i>=0 || j>=0) {
+            sum=carry;
+            if(i>=0) sum+=a.charAt(i)-'0';
+            if(j>=0) sum+=b.charAt(j)-'0';
+            sb.append(sum%2);
+            carry=sum/2;
+
+            i--;
+            j--;
+        }
+        if(carry!=0) sb.append(carry);
+        return sb.reverse().toString();
+    }
+
+    // 70. Climbing Stairs
+    static int climbStairs(int n) {
+        if(n==1 || n==2 || n==3) return n;
+        int i=1;
+        int j=2;
+        int k=2;
+        int sum=0;
+
+
+        while(k!=n) {
+            sum=i+j;
+            i=j;
+            j=sum;
+            k++;
+        }
+        return sum;
+    }
+
 }
