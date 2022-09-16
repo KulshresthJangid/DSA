@@ -104,4 +104,35 @@ public class Arrays {
         return stack.isEmpty();
     }
 
+    // 27. Remove Element
+    public static int removeElement(int[] nums, int val) {
+        int i=0;
+        int j=0;
+        int n=0;
+        int status=0;
+        for(int k=0;k<nums.length;k++) {
+            if(nums[k]==val) {
+                status=1;
+            }
+        }
+        while(n<nums.length) {
+            if(status==1) {
+                if(nums[i]==val && nums[j]==val) {
+                    j++;
+                } else if(nums[i]==val && nums[j]!=val) {
+                    nums[i]=nums[j];
+                    nums[j]=val;
+                    i++;
+                    j++;
+                } else {
+                    i++;
+                    j++;
+                }
+                n++;
+            } else {
+                return nums.length;
+            }
+        }
+        return i;
+    }
 }
