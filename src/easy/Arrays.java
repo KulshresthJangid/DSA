@@ -5,7 +5,8 @@ import java.util.*;
 public class Arrays {
 
     public static void main(String[] args) {
-        System.out.println(climbStairs(10));
+        int[] arr = {2,2,1,1,3};
+        singleNumber(arr);
     }
     // 1. Two Sum
     public static int[] twoSum(int[] nums, int target) {
@@ -142,6 +143,7 @@ public class Arrays {
         return strArr[strArr.length-1].length();
     }
 
+    // Add two binary strings
     public static String addBinary(String a, String b) {
         int i=a.length()-1;
         int j=b.length()-1;
@@ -179,6 +181,24 @@ public class Arrays {
             k++;
         }
         return sum;
+    }
+
+    // 136. Single Number
+    public static int singleNumber(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int i=0;
+        int ans=-1;
+        while(i<nums.length) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0)+1);
+            i++;
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if(entry.getValue()==1) {
+                ans=entry.getKey();
+            }
+        }
+        System.out.println(ans);
+        return ans;
     }
 
 }
