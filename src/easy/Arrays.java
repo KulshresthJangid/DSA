@@ -5,8 +5,7 @@ import java.util.*;
 public class Arrays {
 
     public static void main(String[] args) {
-        int[] arr = {2,2,1,1,3};
-        singleNumber(arr);
+        titleToNumber("ZY");
     }
     // 1. Two Sum
     public static int[] twoSum(int[] nums, int target) {
@@ -199,6 +198,33 @@ public class Arrays {
         }
         System.out.println(ans);
         return ans;
+    }
+
+    // 168. Excel Sheet Column Title(column number)
+    public static String convertToTitle(int columnNumber) {
+        StringBuilder sb = new StringBuilder();
+        while(columnNumber>0) {
+            int rem=columnNumber%26;
+            if(rem==0) {
+                sb.append("Z");
+                columnNumber=(columnNumber/26)-1;
+            } else {
+                sb.append((char)(rem-1+'A'));
+                columnNumber=columnNumber/26;
+            }
+        }
+        return sb.reverse().toString();
+    }
+
+    // 171. Excel Sheet Column Number
+    public static int titleToNumber(String columnTitle) {
+        int result = 0;
+        for (int i = 0; i < columnTitle.length(); i++)
+        {
+            result *= 26;
+            result += columnTitle.charAt(i) - 'A' + 1;
+        }
+        return result;
     }
 
 }
