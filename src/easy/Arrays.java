@@ -5,7 +5,7 @@ import java.util.*;
 public class Arrays {
 
     public static void main(String[] args) {
-        titleToNumber("ZY");
+        System.out.println(isHappy(2));
     }
     // 1. Two Sum
     public static int[] twoSum(int[] nums, int target) {
@@ -225,6 +225,39 @@ public class Arrays {
             result += columnTitle.charAt(i) - 'A' + 1;
         }
         return result;
+    }
+
+    // 202. Happy Number
+    public static boolean isHappy(int n) {
+//        String temp = String.valueOf(n);
+//        int square=0;
+//        while(!temp.equals("1")) {
+//            for (int i=0;i<temp.length();i++) {
+//                int value=Character.getNumericValue(temp.charAt(i))*Character.getNumericValue(temp.charAt(i));
+//                square+=value;
+//            }
+//            temp=String.valueOf(square);
+//            square=0;
+//        }
+//        if(temp.equals("1")) {
+//            return true;
+//        }
+//        return false;
+        int sum=0;
+        while(n>0)
+        {
+            sum+=(n%10)*(n%10);
+            n/=10;
+            if(sum>9&&n==0)
+            {
+                n=sum;
+                sum=0;
+            }
+        }
+        if(sum==1||sum==7)
+            return true;
+        else
+            return false;
     }
 
 }
